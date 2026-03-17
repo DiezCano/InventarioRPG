@@ -37,6 +37,32 @@ public class Personaje {
         return inventario.get(nombreItem);
     }
 
+    public void agregarEquipo(TipoEquipamiento tipoEquipamiento, Item item){
+        // Verificar que el item no este en el equipo
+        if(equipo.containsKey(tipoEquipamiento)){
+            //mover el item al inventario y poner el nuevo
+            Item antiguo = equipo.get(tipoEquipamiento);
+            inventario.put(antiguo.getNombre(), antiguo);
+        }
+        //poner el nuevo
+        equipo.put(tipoEquipamiento, item);
+        //eliminar el nuevo item del inventario
+        inventario.remove(tipoEquipamiento,item);
+
+    }
+
+    public void quitarEquipo(TipoEquipamiento tipoEquipamiento){
+        Item item = equipo.get(tipoEquipamiento);
+        equipo.remove(tipoEquipamiento);
+        inventario.put(item.getNombre(),item);
+    }
+
+    public List<Map.Entry<TipoEquipamiento, Item>> getEquipo(){
+        return new ArrayList<>(equipo.entrySet());
+    }
+
+
+
 
 
 
