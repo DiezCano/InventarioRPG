@@ -61,10 +61,4 @@ public class Personaje {
         return new ArrayList<>(equipo.entrySet());
     }
 
-
-
-
-
-
-
 }
